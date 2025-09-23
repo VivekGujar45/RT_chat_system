@@ -9,6 +9,7 @@ export default function ChatWindow({ user }) {
   ]);
 
   const [newMsg, setNewMsg] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
 
   const sendMessage = () => {
@@ -25,6 +26,7 @@ export default function ChatWindow({ user }) {
       },
     ]);
     setNewMsg("");
+    setIsTyping(false);
   };
 
   // Auto-scroll
@@ -34,7 +36,9 @@ export default function ChatWindow({ user }) {
 
   return (
     <div className="chat-window">
-      <div className="chat-header">Daily Chat Group</div>
+      <div className="chat-header">
+        Daily Chat Group <span>4 members</span>
+      </div>
 
       <div className="chat-messages">
         {messages.map((msg, i) => (
@@ -46,6 +50,7 @@ export default function ChatWindow({ user }) {
             isOwn={msg.sender === user}
           />
         ))}
+        {isTyping && <div className="typing-indicator">Someone is typing...</div>}
         <div ref={messagesEndRef} />
       </div>
 
@@ -54,7 +59,10 @@ export default function ChatWindow({ user }) {
           type="text"
           placeholder="Type a message..."
           value={newMsg}
-          onChange={(e) => setNewMsg(e.target.value)}
+          onChange={(e) => {
+            setNewMsg(e.target.value);
+            setIsTyping(true);
+          }}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <button onClick={sendMessage}>Send</button>
