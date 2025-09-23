@@ -26,7 +26,18 @@ export default function Sidebar({ friends, activeFriend, setActiveFriend }) {
             >
               {friend.name.charAt(0)}
             </div>
-            <span className="status-dot" style={{ background: friend.online ? "green" : "gray" }} />
+            <span
+  className="status-dot"
+  style={{
+    background: friend.online ? "green" : "gray",
+    width: "10px",
+    height: "10px",
+    borderRadius: "50%",
+    display: "inline-block",
+    marginRight: "6px",
+  }}
+  title={friend.online ? "Online" : "Offline"} // shows tooltip on hover
+/>
             <span>{friend.name}</span>
           </li>
         ))}

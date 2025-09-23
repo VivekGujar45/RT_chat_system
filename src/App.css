@@ -253,3 +253,89 @@
   0%, 100% { opacity: 0.3; }
   50% { opacity: 1; }
 }
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 40px auto;
+  height: 80vh;
+  background: #f0f2f5;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 250px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.chat-window {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.status-dot {
+  border: 1px solid #fff;
+}
+
+.status-dot {
+  border: 1px solid #fff;
+}
+
+.group-name-input {
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  background: transparent;
+  color: white;
+  width: 200px;
+}
+.group-name-input:focus {
+  outline: none;
+}
+
+.chat-window.dark {
+  background: #1a1a1a;
+  color: #eee;
+}
+
+.chat-window.dark .chat-header {
+  background: #222;
+  color: #fff;
+}
+
+.chat-window.dark .message.sent {
+  background: #555;
+  color: white;
+}
+
+.chat-window.dark .message.received {
+  background: #333;
+  color: #eee;
+}
+
+.chat-window.dark .chat-input {
+  background: #222;
+}
+
+.sender-name {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: #666;
+}
+
+.message.sent .sender-name {
+  text-align: right;
+  color: #0d47a1;
+}
+
+.message.received .sender-name {
+  text-align: left;
+  color: #222;
+}

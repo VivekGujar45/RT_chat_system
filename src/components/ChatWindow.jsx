@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Message from "./Message";
 
 export default function ChatWindow({ user }) {
+  const [groupName, setGroupName] = useState("Daily Chat Group");
   const [messages, setMessages] = useState([
     { sender: "Mann", text: "Hey team!", time: "08:15 PM" },
     { sender: "Vikram", text: "What's up?", time: "08:16 PM" },
@@ -38,7 +39,13 @@ export default function ChatWindow({ user }) {
   return (
     <div className={`chat-window ${darkMode ? "dark" : ""}`}>
       <div className="chat-header">
-        Daily Chat Group <span>4 members</span>
+          <input
+    type="text"
+    value={groupName}
+    onChange={(e) => setGroupName(e.target.value)}
+    className="group-name-input"
+  />
+        Daily Chat Group<span>4 members</span>
         <button className="dark-toggle" onClick={() => setDarkMode(!darkMode)}>
           {darkMode ? "☀️" : "🌙"}
         </button>
@@ -59,18 +66,38 @@ export default function ChatWindow({ user }) {
       </div>
 
       <div className="chat-input">
-        <input
-          type="text"
-          placeholder="Type a message..."
-          value={newMsg}
-          onChange={(e) => {
-            setNewMsg(e.target.value);
-            setIsTyping(true);
-          }}
-          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-        />
-        <button onClick={sendMessage}>Send</button>
-      </div>
+  <label htmlFor="file-upload" className="upload-btn">📎</label>
+  <input
+    id="file-upload"
+    type="file"
+    style={{ display: "none" }}
+    onChange={(e) => {
+      const file = e.target.files[0];
+      if (file) {
+        setMessages([
+          ...messages,
+          {
+            sender: user,
+            text: `📎 ${file.name}`,
+            time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+          },
+        ]);
+      }
+    }}
+  />
+  <input
+    type="text"
+    placeholder="Type a message..."
+    value={newMsg}
+    onChange={(e) => {
+      setNewMsg(e.target.value);
+      setIsTyping(true);
+    }}
+    onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+  />
+  <button onClick={sendMessage}>Send</button>
+</div>
+
     </div>
   );
 }

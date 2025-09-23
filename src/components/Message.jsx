@@ -13,29 +13,22 @@ export default function Message({ sender, text, time, isOwn }) {
       onMouseEnter={() => setShowReactions(true)}
       onMouseLeave={() => setShowReactions(false)}
     >
-      <div className="message-bubble">
-        <span>{text}</span>
-        <div className="message-meta">
-          <span className="time">{time}</span>
-          {isOwn && (
-            <span className={`tick ${seen ? "seen" : ""}`}>
-              ✓✓
-            </span>
-          )}
-        </div>
-      </div>
-
-      {reaction && <div className="reaction-tag">{reaction}</div>}
-
-      {showReactions && (
-        <div className="reaction-picker">
-          {reactions.map((r, i) => (
-            <span key={i} onClick={() => setReaction(r)}>
-              {r}
-            </span>
-          ))}
-        </div>
-      )}
+      <span className="sender-name">{sender}</span>
+  <div className="message-bubble">
+    <span>{text}</span>
+    <div className="message-meta">
+      <span className="time">{time}</span>
+      {isOwn && <span className={`tick ${seen ? "seen" : ""}`}>✓✓</span>}
     </div>
+  </div>
+  {reaction && <div className="reaction-tag">{reaction}</div>}
+  {showReactions && (
+    <div className="reaction-picker">
+      {reactions.map((r, i) => (
+        <span key={i} onClick={() => setReaction(r)}>{r}</span>
+      ))}
+    </div>
+  )}
+</div>
   );
 }
