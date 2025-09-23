@@ -46,8 +46,8 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #eceff1;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #e5e5e5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,15 +60,27 @@ body {
   width: 900px;
   height: 600px;
   background: #fff;
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Sidebar */
 .sidebar {
   width: 250px;
-  background: #f4f6f8;
+  background: #f7f7f7;
   border-right: 1px solid #ddd;
   padding: 20px;
   box-sizing: border-box;
@@ -77,7 +89,7 @@ body {
 .sidebar h2 {
   margin-bottom: 20px;
   font-size: 18px;
-  color: #333;
+  color: #111;
 }
 
 .sidebar ul {
@@ -86,18 +98,24 @@ body {
 }
 
 .sidebar li {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   font-size: 15px;
   cursor: pointer;
-  padding: 8px;
+  padding: 10px;
   border-radius: 8px;
-  transition: background 0.2s ease;
+  transition: background 0.25s ease, transform 0.1s ease;
 }
 
 .sidebar li:hover {
-  background: #e0e0e0;
+  background: #e3e3e3;
+  transform: scale(1.02);
+}
+
+.sidebar li.active {
+  background: #ddd;
+  font-weight: bold;
 }
 
 .status-dot {
@@ -112,7 +130,7 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: #fdfdfd;
+  background: #fafafa;
 }
 
 .chat-header {
@@ -120,17 +138,34 @@ body {
   border-bottom: 1px solid #ddd;
   font-weight: bold;
   font-size: 16px;
-  background: #007bff;
-  color: white;
+  background: #222;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+.chat-header span {
+  font-size: 12px;
+  color: #bbb;
+}
+
+/* Messages area */
 .chat-messages {
   flex: 1;
   padding: 15px;
   overflow-y: auto;
-  background: #fafafa;
   display: flex;
   flex-direction: column;
+}
+
+/* Custom scrollbar */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
 }
 
 /* Messages */
@@ -142,6 +177,11 @@ body {
   font-size: 14px;
   line-height: 1.4;
   position: relative;
+  transition: transform 0.15s ease;
+}
+
+.message:hover {
+  transform: translateY(-2px);
 }
 
 .message .time {
@@ -151,15 +191,17 @@ body {
   color: #666;
 }
 
+/* Received */
 .message.received {
-  background: #e4e6eb;
-  color: #000;
+  background: #e0e0e0;
+  color: #111;
   align-self: flex-start;
   border-top-left-radius: 0;
 }
 
+/* Sent */
 .message.sent {
-  background: #007bff;
+  background: #333;
   color: #fff;
   align-self: flex-end;
   border-top-right-radius: 0;
@@ -180,12 +222,17 @@ body {
   border-radius: 25px;
   outline: none;
   font-size: 14px;
+  transition: border 0.2s ease;
+}
+
+.chat-input input:focus {
+  border: 1px solid #333;
 }
 
 .chat-input button {
   margin-left: 10px;
   padding: 10px 18px;
-  background: #007bff;
+  background: #333;
   border: none;
   border-radius: 25px;
   color: white;
@@ -194,5 +241,13 @@ body {
 }
 
 .chat-input button:hover {
-  background: #0056b3;
+  background: #111;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  font-size: 12px;
+  color: #555;
+  margin-left: 15px;
+  font-style: italic;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Message from "./Message";
 
 export default function ChatWindow({ user }) {
@@ -9,6 +9,7 @@ export default function ChatWindow({ user }) {
   ]);
 
   const [newMsg, setNewMsg] = useState("");
+  const messagesEndRef = useRef(null);
 
   const sendMessage = () => {
     if (!newMsg.trim()) return;
@@ -26,6 +27,11 @@ export default function ChatWindow({ user }) {
     setNewMsg("");
   };
 
+  // Auto-scroll
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
   return (
     <div className="chat-window">
       <div className="chat-header">Daily Chat Group</div>
@@ -40,6 +46,7 @@ export default function ChatWindow({ user }) {
             isOwn={msg.sender === user}
           />
         ))}
+        <div ref={messagesEndRef} />
       </div>
 
       <div className="chat-input">
