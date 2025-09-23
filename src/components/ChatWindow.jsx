@@ -10,6 +10,7 @@ export default function ChatWindow({ user }) {
 
   const [newMsg, setNewMsg] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const messagesEndRef = useRef(null);
 
   const sendMessage = () => {
@@ -35,9 +36,12 @@ export default function ChatWindow({ user }) {
   }, [messages]);
 
   return (
-    <div className="chat-window">
+    <div className={`chat-window ${darkMode ? "dark" : ""}`}>
       <div className="chat-header">
         Daily Chat Group <span>4 members</span>
+        <button className="dark-toggle" onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? "☀️" : "🌙"}
+        </button>
       </div>
 
       <div className="chat-messages">
