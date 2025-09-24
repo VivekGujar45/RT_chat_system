@@ -56,4 +56,23 @@ function App() {
   );
 }
 
+// function App() {
+//   const friends = [
+//     { name: "Mann", online: true },
+//     { name: "Vedant", online: false },
+//     { name: "Vikram", online: true },
+//     { name: "Vivek", online: true },
+//   ];
+
+//   return (
+//     <div className="app-container">
+//       <div className="chat-card">
+//         <Sidebar friends={friends} />
+//         <ChatWindow user="You" />
+//       </div>
+//     </div>
+//   );
+// }
+
+
 export default App;

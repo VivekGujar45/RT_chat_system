@@ -51,6 +51,7 @@ export default function ChatWindow({ user }) {
         </button>
       </div>
 
+
       <div className="chat-messages">
         {messages.map((msg, i) => (
           <Message
