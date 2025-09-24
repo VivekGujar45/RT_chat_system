@@ -39,17 +39,15 @@ export default function ChatWindow({ user }) {
   return (
     <div className={`chat-window ${darkMode ? "dark" : ""}`}>
       <div className="chat-header">
-          <input
-    type="text"
-    value={groupName}
-    onChange={(e) => setGroupName(e.target.value)}
-    className="group-name-input"
-  />
-        Daily Chat Group<span>4 members</span>
-        <button className="dark-toggle" onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? "☀️" : "🌙"}
-        </button>
-      </div>
+  <div className="header-left">
+    <div className="group-name">Daily Chat Group</div>
+    <div className="member-count">4 members</div>
+  </div>
+  <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
+    {darkMode ? "☀️" : "🌙"}
+  </button>
+</div>
+
 
 
       <div className="chat-messages">
