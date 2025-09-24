@@ -3,6 +3,7 @@ import Message from "./Message";
 
 export default function ChatWindow({ user }) {
   const [groupName, setGroupName] = useState("Daily Chat Group");
+  const [editing, setEditing] = useState(false);
   const [messages, setMessages] = useState([
     { sender: "Mann", text: "Hey team!", time: "08:15 PM" },
     { sender: "Vikram", text: "What's up?", time: "08:16 PM" },
@@ -98,5 +99,7 @@ export default function ChatWindow({ user }) {
 </div>
 
     </div>
+
+    
   );
 }

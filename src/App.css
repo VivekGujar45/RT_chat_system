@@ -24,8 +24,8 @@ body {
 /* 📦 App container */
 .app-container {
   display: flex;
-  width: 90%;
-  max-width: 1100px;
+  width: 110%;
+  max-width: 1500px;
   height: 90vh;
   background: var(--chat-bg);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
@@ -35,7 +35,7 @@ body {
 
 /* 👥 Sidebar */
 .sidebar {
-  width: 25%;
+  width: 35%;
   background: #fff;
   border-right: 1px solid #e5e5e5;
   padding: 20px;
@@ -122,42 +122,52 @@ body {
   padding: 20px;
   overflow-y: auto;
   background: var(--light-bg);
+  display: flex;
+  flex-direction: column;
 }
 
 .message {
   max-width: 70%;
-  padding: 10px 14px;
+  padding: 10px 16px;
   border-radius: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: 15px;
   line-height: 1.4;
+  position: relative;
+  word-wrap: break-word;
 }
 
 .message.incoming {
   background: #f5b041;
   color: #fff;
   align-self: flex-start;
+  border-bottom-left-radius: 0;
 }
 
 .message.outgoing {
   background: var(--sky-blue);
   color: #fff;
   align-self: flex-end;
+  border-bottom-right-radius: 0;
 }
 
 .message-time {
   display: block;
   font-size: 12px;
   opacity: 0.8;
-  margin-top: 4px;
+  margin-top: 6px;
+  text-align: right;
 }
 
 /* 📝 Input Bar */
 .chat-input {
+  flex-shrink: 0;
   display: flex;
   padding: 14px 20px;
   background: #fff;
   border-top: 1px solid #ddd;
+  position: sticky;
+  bottom: 0;
 }
 
 .chat-input input {
@@ -185,3 +195,26 @@ body {
 .chat-input button:hover {
   background: #0078ff;
 }
+
+/* .dark-mode {
+  background: #1f1f1f;
+  color: #fff;
+}
+
+.dark-mode .chat-window {
+  background: #2c2c2c;
+}
+
+.dark-mode .chat-header {
+  background: linear-gradient(135deg, #232526, #414345);
+}
+
+.dark-mode .chat-input {
+  background: #1f1f1f;
+}
+
+.dark-mode input {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+} */

@@ -36,11 +36,13 @@
 
 // ======================== New Code ========================
 
+// import { useState } from "react";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import ChatWindow from "./components/ChatWindow";
 
 function App() {
+  // const [darkMode, setDarkMode] = useState(false);
   const friends = [
     { name: "Mann", online: true },
     { name: "Vedant", online: false },
@@ -49,10 +51,16 @@ function App() {
   ];
 
   return (
-    <div className="app-container">
-      <Sidebar friends={friends} />
-      <ChatWindow user="You" />
-    </div>
+    <>
+      <div className="app-container">
+        <Sidebar friends={friends} />
+        <ChatWindow user="You" />
+      </div>
+      {/* <div className={`app-container ${darkMode ? "dark-mode" : ""}`}>
+        <Sidebar />
+        <ChatWindow darkMode={darkMode} setDarkMode={setDarkMode} /> */}
+      {/* </div> */}
+    </>
   );
 }
 
